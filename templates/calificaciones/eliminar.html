@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Eliminar calificacion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 32px;
+            color: #1f2937;
+            background: #f8fafc;
+        }
+
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .detail {
+            padding: 16px;
+            border: 1px solid #fee2e2;
+            border-radius: 8px;
+            background: #fef2f2;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        button,
+        a {
+            border-radius: 6px;
+            padding: 10px 14px;
+            text-decoration: none;
+        }
+
+        button {
+            border: 0;
+            color: #ffffff;
+            background: #dc2626;
+            cursor: pointer;
+        }
+
+        a {
+            color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Eliminar calificacion</h1>
+        <div class="detail">
+            <p>Estas seguro de eliminar la calificacion de <strong>{{ calificacion.nombre_estudiante }}</strong> en <strong>{{ calificacion.asignatura }}</strong>?</p>
+            <p>Promedio registrado: <strong>{{ calificacion.promedio }}</strong></p>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="actions">
+                <button type="submit">Eliminar</button>
+                <a href="{% url 'calificaciones:listar' %}">Cancelar</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
