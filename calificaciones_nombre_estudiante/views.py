@@ -1,9 +1,27 @@
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import CalificacionForm
+from .forms import CalificacionForm, RegistroUsuarioForm
 from .models import Calificacion
+
+
+def registrar_usuario(request):
+    if request.method == 'POST':
+        form = RegistroUsuarioForm(request.POST)
+        if form.is_valid():
+            usuario = form.save()
+            login(request, usuario)
+            return redirect('inicio')
+    else:
+        form = RegistroUsuarioForm()
+
+    return render(
+        request,
+        'registration/registro.html',
+        {'form': form},
+    )
 
 
 @login_required
