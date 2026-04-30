@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Sistema de evaluaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 32px;
+            color: #1f2937;
+            background: #f8fafc;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .panel {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        a,
+        button {
+            border-radius: 6px;
+            padding: 10px 14px;
+            text-decoration: none;
+            font: inherit;
+        }
+
+        .primary {
+            color: #ffffff;
+            background: #2563eb;
+        }
+
+        .secondary {
+            color: #1d4ed8;
+            background: #eff6ff;
+        }
+
+        form {
+            margin: 0;
+        }
+
+        button {
+            border: 0;
+            color: #b91c1c;
+            background: #fee2e2;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Sistema de evaluaciones</h1>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Cerrar sesion</button>
+            </form>
+        </header>
+
+        <section class="panel">
+            <h2>Gestion de calificaciones</h2>
+            <p>Usuario activo: <strong>{{ request.user.username }}</strong></p>
+            <div class="actions">
+                <a class="primary" href="{% url 'calificaciones:listar' %}">Ver calificaciones</a>
+                <a class="secondary" href="{% url 'calificaciones:crear' %}">Registrar calificacion</a>
+                <a class="secondary" href="{% url 'calificaciones:promedio_general' %}">Promedio general</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

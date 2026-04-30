@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.urls import include, path
+from django.shortcuts import render
 
 
 @login_required
 def inicio(request):
-    return HttpResponse('Sistema de autenticacion activo.')
+    return render(request, 'inicio.html')
 
 
 urlpatterns = [

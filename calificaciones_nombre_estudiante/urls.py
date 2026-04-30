@@ -6,6 +6,7 @@ app_name = 'calificaciones'
 
 urlpatterns = [
     path('', views.listar_calificaciones, name='listar'),
+    path('registro/', views.registrar_usuario, name='registro'),
     path('crear/', views.crear_calificacion, name='crear'),
     path('<int:pk>/editar/', views.editar_calificacion, name='editar'),
     path('<int:pk>/eliminar/', views.eliminar_calificacion, name='eliminar'),

@@ -24,6 +24,13 @@
             margin-bottom: 20px;
         }
 
+        .header-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
         h1 {
             margin: 0;
         }
@@ -34,6 +41,15 @@
             padding: 10px 14px;
             color: #ffffff;
             background: #2563eb;
+            text-decoration: none;
+        }
+
+        .link-button {
+            display: inline-block;
+            border-radius: 6px;
+            padding: 10px 14px;
+            color: #1d4ed8;
+            background: #eff6ff;
             text-decoration: none;
         }
 
@@ -87,7 +103,11 @@
     <main>
         <div class="header">
             <h1>Calificaciones</h1>
-            <a class="button" href="{% url 'calificaciones:crear' %}">Registrar calificacion</a>
+            <div class="header-actions">
+                <a class="link-button" href="{% url 'inicio' %}">Inicio</a>
+                <a class="link-button" href="{% url 'calificaciones:promedio_general' %}">Promedio general</a>
+                <a class="button" href="{% url 'calificaciones:crear' %}">Registrar calificacion</a>
+            </div>
         </div>
 
         <table>
